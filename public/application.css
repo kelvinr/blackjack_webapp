@@ -1,0 +1,82 @@
+#hit {
+  float: left;
+}
+
+#stay {
+  float: left;
+  margin-left: 8px;
+}
+
+.card_image {
+  margin: 0px, 8px, 5px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+body {
+  background: url('images/pool_table.png');
+  color: #640303;
+}
+
+h1{
+  color: #401A1A;
+}
+
+hr {
+  border-color: #640303;
+}
+
+.welcome {
+  margin-top: -8px;
+  color: #401A1A;
+}
+
+.well {
+   background-color: rgba(245, 245, 245, 0.3);
+}
+
+.restart {
+  font-size: 1.1em;
+}
+
+#vertical_center {
+  margin-top: 25%;
+}
+
+
+.blink {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1.6s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 5;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1.6s;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-iteration-count: 5;
+
+    animation-name: blinker;
+    animation-duration: 1.6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 5;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}

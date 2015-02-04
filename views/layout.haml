@@ -1,0 +1,26 @@
+!!! 5
+%html
+  %head
+    %title My First App
+    %link(rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+    %link(rel="stylesheet" href="/application.css")
+  %body{style: "padding-top: 50px;"}
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %ul.nav
+            %li
+              %a{href: "/new_player"}
+                %i.icon-refresh.icon-white
+                New Game
+
+    .container
+      -if @error
+        .alert.alert-error.blink
+          =@error
+      -if @success
+        .alert.alert-success.blink
+          =@success
+      =yield
+    
