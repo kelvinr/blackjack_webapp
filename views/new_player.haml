@@ -1,13 +1,19 @@
-.container.text-center.well#vertical_center
-  %h2
-    Hello,
-    %br
-    what's your name?
+.container
+  .col-xs-6.col-xs-offset-3
+    %img.img-responsive{src: 'images/BlackJack.jpg'}
 
-  %form{:action => "/new_player", :method => "post"}
-    %input{:type => 'text', :name => 'username'}
-    %br
-    %button.btn.btn-inverse{:type => 'submit'}
-      Submit
-      %i.icon-user.icon-white
+.container.text-center#vertical_center
+  .col-md-8.col-md-offset-2.well
+    %h2
+      Hello,
+      %br
+      what's your name?
+
+    %form{action: "/new_player", method: "post"}
+      %input{type: 'text', name: 'username', placeholder: "Name"}
+      %br
+      %br
+      %button.btn.btn-success{type: 'submit'}
+        Submit
+        %i.fa.fa-user-plus
 

@@ -1,26 +1,32 @@
 !!! 5
 %html
   %head
-    %title My First App
+    %meta{charset: 'utf-8'}
+    %meta{name: "viewport", content: 'width=device-width', 'initial-scale' => '1'}
+    
     %link(rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css")
     %link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
     %link(rel="stylesheet" href="/application.css")
-  %body{style: "padding-top: 50px;"}
-    .navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container
-          %ul.nav
-            %li
-              %a{href: "/new_player"}
-                %i.icon-refresh.icon-white
-                New Game
-
-    .container
+    %title Blackjack | Casino
+  %body
+    .navbar-wrapper
+      .container
+        .navbar.navbar-inverse.navbar-fixed-top
+          .container
+            %ul.nav.navbar-nav
+              %li
+                %a{href: "/new_player"}
+                  %i.glyphicon.glyphicon-refresh
+                  New Game
+    .container-fluid
       -if @error
-        .alert.alert-error.blink
+        .alert.alert-danger.text-center.blink
           =@error
       -if @success
-        .alert.alert-success.blink
+        .alert.alert-success.text-center.blink
           =@success
       =yield
+
+%script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}
+%script{src: "/vendor/bootstrap/js/bootstrap.min.js"}
     

@@ -34,7 +34,7 @@ helpers do
     value = card[1]
     value = face.fetch(value) if face.has_key?(value)
       
-    "<img src='/images/cards/#{suit}_#{value}.jpg' class='card_image'>"
+    "<img src='/images/cards/#{suit}_#{value}.jpg' class='img-responsive card_image'>"
   end
 
   def winner!(msg)
@@ -54,6 +54,18 @@ helpers do
     @show_hit_or_stay_buttons = false
     @success = "It's a tie! #{msg}"
   end
+
+  #   player_total = total(session[:player_cards])
+  #   dealer_total = total(session[:dealer_cards])
+  #   if player_total == BLACKJACK_AMOUNT
+  #     session[:bank] += session[:bet] * 1.5
+  #   elsif player_total > dealer_total
+  #     session[:bank] += session[:bet]
+  #   elsif player_total < dealer_total || player_total > BLACKJACK_AMOUNT
+  #     session[:bank] -= session[:bet]
+  #   end
+  #   @no_bet = true
+  # end
 end
 
 before do
@@ -78,18 +90,18 @@ post '/new_player' do
     halt haml(:new_player)
   end
   session[:username] = params[:username]
+  session[:bank] = 500
   redirect '/game'
 end
 
-get '/bet' do
-  session[:bank] = 500
-
-  haml :bet
-end
-
 post '/bet' do
-  session[:bank]
-
+  if params[:bet].empty?
+    @error = "Must place a bet"
+    halt haml(:bet)
+    @no_bet = true
+  end
+  session[:bet] = params[:bet]
+  haml :game
 end
 
 get '/game' do
@@ -105,6 +117,7 @@ get '/game' do
     session[:dealer_cards] << session[:deck].pop
     session[:player_cards] << session[:deck].pop
   end
+  @no_bet = true
   haml :game
 end
 
@@ -153,6 +166,14 @@ get '/game/compare' do
   @show_hit_or_stay_buttons = false
   player_total = total(session[:player_cards])
   dealer_total = total(session[:dealer_cards])
+
+  if player_total == BLACKJACK_AMOUNT
+    session[:bank] += session[:bet] * 1.5
+  elsif player_total > dealer_total
+    session[:bank] += session[:bet]
+  elsif player_total < dealer_total || player_total > BLACKJACK_AMOUNT
+    session[:bank] -= session[:bet]
+  end
 
   if player_total < dealer_total
     loser!("#{session[:username]} stayed at #{player_total}, and the dealer stayed at #{dealer_total}.")

@@ -1,7 +1,12 @@
-.container.text-center.well#vertical_center
-  %h3 Thanks for playing.
-  %h4 See you in Vegas!
-  %a.restart{href: '/game'}
-    %button.btn.btn-success
-      %i.icon-repeat
-      Start over
+.container
+  .col-sm-6.col-sm-offset-3.text-center
+    %img.img-responsive{src: 'images/BlackJack.jpg'}
+
+.container.text-center#vertical_center
+  .col-md-8.col-md-offset-2.well
+    %h3 Thanks for playing.
+    %h4 Next up is Vegas!
+    %a.restart{href: '/game'}
+      %button.btn.btn-success
+        %i.glyphicon.glyphicon-repeat
+        Start over

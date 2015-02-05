@@ -1,47 +1,70 @@
 .container.text-center
-  %h1 Blackjack!
-  %hr
-  %h4.welcome= "Welcome #{session[:username]}"
+  .col-md-8.col-md-offset-2
+    %h1 Blackjack!
+    %hr
+    %h3.welcome= "Welcome #{session[:username]}"
 
--if @play_again
-  .well.text-center
-    %p
-      %b Play again?
-      %br
-      %a.btn.btn-success{href: '/game'} Yes
-      %a.btn.btn-danger{href: '/game_over'} No
+.container
+  .col-md-10.well.text-center
+    .row
+      %h4 Dealer's cards
+      -session[:dealer_cards].each_with_index do |card, idx|
+        .col-xs-4.card_image
+          -if session[:turn] != "dealer" && idx == 0
+            %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
+          -else
+            =card_image(card)
 
-.well
-  %h4 Dealer's cards:
-  -session[:dealer_cards].each_with_index do |card, idx|
-    -if session[:turn] != "dealer" && idx == 0
-      %img{src: 'images/cards/cover.jpg'}
-    -else
-      =card_image(card)
+  .col-xs-6.col-md-2
+    .well.text-center
+      %h4.total
+        =precede "#{session[:username]}'s total is: " do
+          =total(session[:player_cards])
 
   -if @show_dealer_hit_button
-    %p
-      %h5
-        =surround "Dealer has ", ", and will hit" do
-          =total(session[:dealer_cards])
-      %form{action: '/game/dealer/hit', method: 'post'}
-        %button.btn.btn-primary{type: 'submit'}
-          Click for Dealer's next card
-          %i.icon-arrow-right.icon-white
+    .col-xs-6.col-md-2
+      .well.text-center{style: 'overflow: hidden;'}
+        %h4
+          =surround "Dealer has ", ", and will hit" do
+            =total(session[:dealer_cards])
+        %form{action: '/game/dealer/hit', method: 'post'}
+          %button.btn.btn-sm.btn-primary{type: 'submit'}
+            Dealer's next card
+            %i.glyphicon.glyphicon-arrow-right
+
+  -if @show_hit_or_stay_buttons
+    .col-xs-6.col-md-2
+      .well{style: 'overflow: hidden;'}
+        .form-actions
+          %form{action: "/hit", method: "post"}
+            %input.btn.btn-success#hit{type: 'submit', value: 'Hit'}
+          %form{action: "/stay", method: "post"}
+            %input.btn.btn-warning{type: 'submit', value: 'Stay'}
+
+  -if @play_again
+    .col-xs-6.col-md-2
+      .well.text-center
+        %b Play again?
+        .btn-group-vertical{role: 'group'}
+          %a.btn.btn-success{href: '/game'} Yes
+          %a.btn.btn-danger{href: '/game_over'} No
 %br
 
-.well
-  %h4= "#{session[:username]}'s cards:"
-  %p
-    -session[:player_cards].each do |card|
-      =card_image(card)
-    %h5
-      =precede "#{session[:username]}'s total is: " do
-        =total(session[:player_cards])
+.container
+  .col-md-10.well.text-center
+    .row
+      %h4.text-center= "#{session[:username]}'s cards"
+      -session[:player_cards].each do |card|
+        .col-xs-4.card_image
+          = card_image(card)
 
--if @show_hit_or_stay_buttons
-  %form#hit{action: "/hit", method: "post"}
-    %input.btn.btn-success{type: 'submit', value: "Hit"}
-
-  %form#stay{action: "/stay", method: "post"}
-    %input.btn.btn-warning{type: 'submit', value: "Stay"}
+  -if @no_bet
+    .col-xs-12.col-md-2
+      .well.text-center
+        %h4 Place a bet
+        %h3= "Current balance: #{session[:bank]}"
+        %form.form-actions{action: "/bet", method: 'post'}
+          %input.form-control{type: 'number', name: 'bet', placeholder: 'Amount'}
+            %button.btn.btn-dark{type: 'submit'}
+              %i.fa.fa-money
+              Place bet
