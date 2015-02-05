@@ -2,11 +2,24 @@
   .col-sm-6.col-sm-offset-3.text-center
     %img.img-responsive{src: 'images/BlackJack.jpg'}
 
-.container.text-center#vertical_center
-  .col-md-8.col-md-offset-2.well
-    %h3 Thanks for playing.
-    %h4 Next up is Vegas!
-    %a.restart{href: '/game'}
-      %button.btn.btn-success
-        %i.glyphicon.glyphicon-repeat
-        Start over
+-if @broke
+  .container.text-center#vertical_center
+    .col-md-8.col-md-offset-2.well
+      %h3 Thanks for playing.
+      %h4
+        =precede "Sorry you spent all your money!  " do
+          %i.fa.fa-frown-o.fa-2x
+      %a.restart{href: '/new_player'}
+        %button.btn.btn-danger
+          New game
+-else   
+  .container.text-center#vertical_center
+    .col-md-8.col-md-offset-2.well
+      %h3 Thanks for playing.
+      %h4 See you in Vegas!
+      %a.restart{href: '/game'}
+        %button.btn.btn-success
+          %i.fa.fa-refresh.fa-spin
+          Start over
+
+

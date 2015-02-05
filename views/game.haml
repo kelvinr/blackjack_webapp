@@ -15,26 +15,26 @@
           -else
             =card_image(card)
 
-  .col-xs-6.col-md-2
-    .well.text-center
-      %h4.total
-        =precede "#{session[:username]}'s total is: " do
-          =total(session[:player_cards])
+  -if !@no_bet
+    .col-xs-6.col-md-2
+      .well.text-center
+        %h4.total
+          =precede "#{session[:username]}'s total is: " do
+            =total(session[:player_cards])
 
   -if @show_dealer_hit_button
     .col-xs-6.col-md-2
-      .well.text-center{style: 'overflow: hidden;'}
+      .well.text-center
         %h4
-          =surround "Dealer has ", ", and will hit" do
+          =precede "Dealer total:" do
             =total(session[:dealer_cards])
         %form{action: '/game/dealer/hit', method: 'post'}
-          %button.btn.btn-sm.btn-primary{type: 'submit'}
-            Dealer's next card
-            %i.glyphicon.glyphicon-arrow-right
+          %button.btn.btn-xlarge.btn-primary{type: 'submit'}
+            %i.fa.fa-hand-o-right.dealer_button
 
-  -if @show_hit_or_stay_buttons
+  -if @show_hit_or_stay_buttons && !@no_bet
     .col-xs-6.col-md-2
-      .well{style: 'overflow: hidden;'}
+      .well
         .form-actions
           %form{action: "/hit", method: "post"}
             %input.btn.btn-success#hit{type: 'submit', value: 'Hit'}
@@ -56,7 +56,10 @@
       %h4.text-center= "#{session[:username]}'s cards"
       -session[:player_cards].each do |card|
         .col-xs-4.card_image
-          = card_image(card)
+          -if @no_bet
+            %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
+          -else
+            = card_image(card)
 
   -if @no_bet
     .col-xs-12.col-md-2
@@ -64,7 +67,7 @@
         %h4 Place a bet
         %h3= "Current balance: #{session[:bank]}"
         %form.form-actions{action: "/bet", method: 'post'}
-          %input.form-control{type: 'number', name: 'bet', placeholder: 'Amount'}
+          %input.form-control{type: 'number', min: '1', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
             %button.btn.btn-dark{type: 'submit'}
               %i.fa.fa-money
               Place bet

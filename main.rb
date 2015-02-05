@@ -11,9 +11,9 @@ DEALER_HIT_MIN = 17
 
 helpers do
   def values(cards)
-    arr = cards.map{|card| card[1]}
-    @aces = arr.count('A')
-    arr
+    card_values = cards.map{|card| card[1]}
+    @aces = card_values.count('A')
+    card_values
   end
 
   def total(cards)
@@ -55,17 +55,9 @@ helpers do
     @success = "It's a tie! #{msg}"
   end
 
-  #   player_total = total(session[:player_cards])
-  #   dealer_total = total(session[:dealer_cards])
-  #   if player_total == BLACKJACK_AMOUNT
-  #     session[:bank] += session[:bet] * 1.5
-  #   elsif player_total > dealer_total
-  #     session[:bank] += session[:bet]
-  #   elsif player_total < dealer_total || player_total > BLACKJACK_AMOUNT
-  #     session[:bank] -= session[:bet]
-  #   end
-  #   @no_bet = true
-  # end
+  def broke?(bank)
+    @broke = true if bank == 0
+  end
 end
 
 before do
@@ -73,11 +65,8 @@ before do
 end
 
 get '/' do
-  if session[:username]
-    redirect '/game'
-  else
-    redirect '/new_player'
-  end
+  redirect '/game' if session[:username]
+  redirect '/new_player'
 end
 
 get '/new_player' do
@@ -97,15 +86,16 @@ end
 post '/bet' do
   if params[:bet].empty?
     @error = "Must place a bet"
-    halt haml(:bet)
     @no_bet = true
+    halt haml(:game)
   end
-  session[:bet] = params[:bet]
+  session[:bet] = params[:bet].to_i
   haml :game
 end
 
 get '/game' do
   session[:turn] = session[:username]
+  redirect '/game_over' if broke?(session[:bank])
 
   SUITS = ["hearts", "diamonds", "clubs", "spades"]
   VALUES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -126,8 +116,10 @@ post '/hit' do
   player_total = total(session[:player_cards])
 
   if player_total == BLACKJACK_AMOUNT
+    session[:bank] += session[:bet] * 1.5
     winner!("#{session[:username]} hit blackjack!")
   elsif player_total > BLACKJACK_AMOUNT
+    session[:bank] -= session[:bet]
     loser!("It looks like #{session[:username]} busted.")
   end
   haml :game
@@ -135,6 +127,7 @@ end
 
 post '/stay' do
   redirect '/game/dealer' if total(session[:player_cards]) != BLACKJACK_AMOUNT
+  session[:bank] += session[:bet] * 1.5
   winner!("#{session[:username]} hit blackjack!")
   haml :game
 end
@@ -146,8 +139,10 @@ get '/game/dealer' do
   dealer_total = total(session[:dealer_cards])
 
   if dealer_total == BLACKJACK_AMOUNT
+    session[:bank] -= session[:bet]
     loser!("Dealer hit blackjack")
   elsif dealer_total > BLACKJACK_AMOUNT
+    session[:bank] += session[:bet]
     winner!("Dealer busted at #{dealer_total}")
   elsif dealer_total >= DEALER_HIT_MIN
     redirect '/game/compare'
@@ -167,17 +162,11 @@ get '/game/compare' do
   player_total = total(session[:player_cards])
   dealer_total = total(session[:dealer_cards])
 
-  if player_total == BLACKJACK_AMOUNT
-    session[:bank] += session[:bet] * 1.5
-  elsif player_total > dealer_total
-    session[:bank] += session[:bet]
-  elsif player_total < dealer_total || player_total > BLACKJACK_AMOUNT
-    session[:bank] -= session[:bet]
-  end
-
   if player_total < dealer_total
+    session[:bank] -= session[:bet]
     loser!("#{session[:username]} stayed at #{player_total}, and the dealer stayed at #{dealer_total}.")
   elsif player_total > dealer_total
+    session[:bank] += session[:bet]
     winner!("#{session[:username]} stayed at #{player_total}, and the dealer stayed at #{dealer_total}.")
   else
     tie!("Both #{session[:username]} and the dealer stayed at #{player_total}.")
@@ -186,6 +175,7 @@ get '/game/compare' do
 end
 
 get '/game_over' do
+  broke?(session[:bank])
   haml :game_over
 end
 

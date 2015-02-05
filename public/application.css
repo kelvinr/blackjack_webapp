@@ -1,9 +1,23 @@
-.btn-sm {
-  margin-left: -4%;
+a:hover {
+  text-decoration: none;
 }
 
-.btn-dark {
-  margin-top: 3px;
+body {
+  background: url('images/pool_table.png');
+  color: #640303;
+  padding-top: 60px;
+}
+
+h1{
+  color: #401A1A;
+}
+
+hr {
+  border-color: #640303;
+}
+
+.btn-sm {
+  margin-left: -4%;
 }
 
 .form-actions {
@@ -26,24 +40,6 @@
 
 .img-responsive {
   display: inline;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-body {
-  background: url('images/pool_table.png');
-  color: #640303;
-  padding-top: 60px;
-}
-
-h1{
-  color: #401A1A;
-}
-
-hr {
-  border-color: #640303;
 }
 
 .welcome {
@@ -72,17 +68,17 @@ hr {
     -webkit-animation-name: blinker;
     -webkit-animation-duration: 1.6s;
     -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: 5;
+    -webkit-animation-iteration-count: 3;
 
     -moz-animation-name: blinker;
     -moz-animation-duration: 1.6s;
     -moz-animation-timing-function: ease-in-out;
-    -moz-animation-iteration-count: 5;
+    -moz-animation-iteration-count: 3;
 
     animation-name: blinker;
     animation-duration: 1.6s;
     animation-timing-function: ease-in-out;
-    animation-iteration-count: 5;
+    animation-iteration-count: 3;
 }
 
 @-moz-keyframes blinker {  
@@ -103,10 +99,56 @@ hr {
     100% { opacity: 1.0; }
 }
 
+/* Point animation for dealer button */
+.dealer_button {
+    -webkit-animation-name: point;
+    -webkit-animation-duration: 1.4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: point;
+    -moz-animation-duration: 1.4s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+
+    animation-name: point;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@-moz-keyframes point {  
+    0% {margin-left:-200%;}
+    50% {margin-left: 55%;}
+    100% {margin-left: 80%;}
+}
+
+@-webkit-keyframes point {  
+    0% {margin-left:-200%;}
+    50% {margin-left: 55%;}
+    100% {margin-left: 80%;}
+}
+
+@keyframes point {  
+    0% {margin-left:-200%;}
+    50% {margin-left: 55%;}
+    100% {margin-left: 80%;}
+}
+
+/* Custom buttons */
+.btn-xlarge {
+    padding: 2% 40%;
+    font-size: 22px;
+    line-height: .5;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
 .btn-dark {
   color: #ffffff;
   background-color: #000000;
   border-color: #777777;
+  margin-top: 3px;
 }
 .btn-dark:hover,
 .btn-dark:focus,
