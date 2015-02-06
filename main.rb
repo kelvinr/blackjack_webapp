@@ -56,7 +56,7 @@ helpers do
   end
 
   def broke?(bank)
-    @broke = true if bank == 0
+    @broke = true if bank < 1
   end
 end
 
