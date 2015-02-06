@@ -67,7 +67,7 @@
         %h4 Place a bet
         %h3= "Current balance: #{session[:bank]}"
         %form.form-actions{action: "/bet", method: 'post'}
-          %input.form-control{type: 'number', min: '.5', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
+          %input.form-control{type: 'number', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
             %button.btn.btn-dark{type: 'submit'}
               %i.fa.fa-money
               Place bet
