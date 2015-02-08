@@ -31,7 +31,7 @@ hr {
 }
 
 .card_image {
-  margin: 0 -2em .4em .6em;
+  margin: 0 -2em .3em .6em;
 }
 
 .total {
@@ -63,6 +63,36 @@ hr {
 .navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
 .navbar {min-height:40px !important}
 
+/* Custom buttons */
+.btn-xlarge {
+    padding: 2% 40%;
+    font-size: 22px;
+    line-height: .5;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+.btn-dark {
+  color: #ffffff;
+  background-color: #000000;
+  border-color: #777777;
+  margin-top: 3px;
+}
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active,
+.btn-dark.active,
+.open .dropdown-toggle.btn-dark {
+  color: #ffffff;
+  background-color: #353535;
+  border-color: #585858;
+}
+.btn-dark:active,
+.btn-dark.active,
+.open .dropdown-toggle.btn-dark {
+  background-image: none;
+}
+
 /* Animation for alerts */
 .blink {
     -webkit-animation-name: blinker;
@@ -93,7 +123,7 @@ hr {
     100% { opacity: 1.0; }
 }
 
-@keyframes blinker {  
+@keyframes blinker { 
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
@@ -135,32 +165,97 @@ hr {
     100% {margin-left: 80%;}
 }
 
-/* Custom buttons */
-.btn-xlarge {
-    padding: 2% 40%;
-    font-size: 22px;
-    line-height: .5;
-    -webkit-border-radius: 8px;
-       -moz-border-radius: 8px;
-            border-radius: 8px;
+/* Spin Animation for bet alert */
+.alert-info {
+  background: #99BAFF;
+  color: #203C23;
 }
-.btn-dark {
-  color: #ffffff;
-  background-color: #000000;
-  border-color: #777777;
-  margin-top: 3px;
+
+.pos {
+  position: absolute;
 }
-.btn-dark:hover,
-.btn-dark:focus,
-.btn-dark:active,
-.btn-dark.active,
-.open .dropdown-toggle.btn-dark {
-  color: #ffffff;
-  background-color: #353535;
-  border-color: #585858;
+
+.spin {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+
+    animation-name: spin;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
-.btn-dark:active,
-.btn-dark.active,
-.open .dropdown-toggle.btn-dark {
-  background-image: none;
+
+@-moz-keyframes spin {
+    0% { -webkit-transform: rotate(0deg);
+            margin-left: -35%;}
+    50% { -webkit-transform: rotate(520deg);
+            margin-left: -4%;}
+   100% { -webkit-transform: rotate(0deg); 
+            margin-left: -35%;}
 }
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg);
+            margin-left: -35%;}
+    50% { -webkit-transform: rotate(520deg);
+            margin-left: -4%;}
+   100% { -webkit-transform: rotate(0deg); 
+            margin-left: -35%;}
+}
+@keyframes spin {
+    0% { transform: rotate(0deg);
+            margin-left: -35%;}
+    50% { transform: rotate(520deg);
+            margin-left: -4%;}
+    100% { transform: rotate(0deg); 
+            margin-left: -35%;}
+}
+
+.spin_r {
+    -webkit-animation-name: spin_r;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: spin_r;
+    -moz-animation-duration: 4s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+
+    animation-name: spin_r;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@-moz-keyframes spin_r {
+    0% { -webkit-transform: rotate(500deg);
+            margin-left: 30%;}
+    50% { -webkit-transform: rotate(0deg);
+            margin-left: 0%;}
+    100% { -webkit-transform: rotate(500deg); 
+            margin-left: 30%;}
+}
+@-webkit-keyframes spin_r {
+    0% { -webkit-transform: rotate(500deg);
+            margin-left: 30%;}
+    50% { -webkit-transform: rotate(0deg);
+            margin-left: 0%;}
+    100% { -webkit-transform: rotate(500deg); 
+            margin-left: 30%;}
+}
+@keyframes spin_r {
+    0% { transform: rotate(500deg);
+            margin-left: 30%;}
+    50% { transform: rotate(0deg);
+            margin-left: 0%;}
+    100% { transform: rotate(500deg); 
+            margin-left: 30%;}
+}
+

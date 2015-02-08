@@ -1,74 +1,87 @@
-.container.text-center
-  .col-md-8.col-md-offset-2
-    %h1 Blackjack!
-    %hr
-    %h3.welcome= "Welcome #{session[:username]}"
+#game
+  -if !@no_bet && !(@winner || @loser)
+    .alert.alert-info.text-center
+      %img.spin.pos{src: '/images/coin.png'}
+      ="| #{session[:username]} placed a bet for #{session[:bet]} |"
+      %img.spin_r.pos{src: '/images/coin.png'}
+  -elsif @loser
+    .alert.alert-danger.text-center.blink
+      =@loser
+  -elsif @winner
+    .alert.alert-success.text-center.blink
+      =@winner
 
-.container
-  .col-xs-12.col-md-10.well.text-center
-    .row
-      %h4 Dealer's cards
-      -session[:dealer_cards].each_with_index do |card, idx|
-        .col-xs-4.card_image
-          -if session[:turn] != "dealer" && idx == 0
-            %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
-          -else
-            =card_image(card)
+  .container.text-center
+    .col-md-8.col-md-offset-2
+      %h1 Blackjack!
+      %hr
+      %h3.welcome= "Welcome #{session[:username]}"
 
-  -if !@no_bet
-    .col-xs-6.col-md-2
-      .well.text-center
-        %h4.total
-          =precede "#{session[:username]}'s total is: " do
-            =total(session[:player_cards])
+  .container
+    .col-xs-12.col-md-10.well
+      .row.text-center
+        %h4.text-center Dealer's cards
+        -session[:dealer_cards].each_with_index do |card, idx|
+          .col-xs-4.card_image
+            -if session[:turn] != "dealer" && idx == 0
+              %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
+            -else
+              =card_image(card)
 
-  -if @show_dealer_hit_button
-    .col-xs-6.col-md-2
-      .well.text-center
-        %h4
-          =precede "Dealer total:" do
-            =total(session[:dealer_cards])
-        %form{action: '/game/dealer/hit', method: 'post'}
-          %button.btn.btn-xlarge.btn-primary{type: 'submit'}
-            %i.fa.fa-hand-o-right.dealer_button
+    -if !@no_bet
+      .col-xs-6.col-md-2
+        .well.text-center
+          %h4.total
+            =precede "#{session[:username]}'s total is: " do
+              =total(session[:player_cards])
 
-  -if @show_hit_or_stay_buttons && !@no_bet
-    .col-xs-6.col-md-2
-      .well
-        .form-actions
-          %form{action: "/hit", method: "post"}
-            %input.btn.btn-success#hit{type: 'submit', value: 'Hit'}
-          %form{action: "/stay", method: "post"}
-            %input.btn.btn-warning{type: 'submit', value: 'Stay'}
+    -if @show_dealer_hit_button
+      .col-xs-6.col-md-2
+        .well.text-center
+          %h4
+            =precede "Dealer total:" do
+              =total(session[:dealer_cards])
+          %form#dealer_hit{action: '/game/dealer/hit', method: 'post'}
+            %button.btn.btn-xlarge.btn-primary{type: 'submit'}
+              %i.fa.fa-hand-o-right.dealer_button
 
-  -if @play_again
-    .col-xs-6.col-md-2
-      .well.text-center
-        %b Play again?
-        .btn-group-vertical{role: 'group'}
-          %a.btn.btn-success{href: '/game'} Yes
-          %a.btn.btn-danger{href: '/game_over'} No
-%br
+    -if @show_hit_or_stay_buttons && !@no_bet
+      .col-xs-6.col-md-2
+        .well
+          .form-actions
+            %form{action: "/hit", method: "post"}
+              %input.btn.btn-success#hit{type: 'submit', value: 'Hit'}
+            %form{action: "/stay", method: "post"}
+              %input.btn.btn-warning#stay{type: 'submit', value: 'Stay'}
 
-.container
-  .col-xs-12.col-md-10.well.text-center
-    .row
-      %h4.text-center= "#{session[:username]}'s cards"
-      -session[:player_cards].each do |card|
-        .col-xs-4.card_image
-          -if @no_bet
-            %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
-          -else
-            = card_image(card)
+    -if @play_again
+      .col-xs-6.col-md-2
+        .well.text-center
+          %b Play again?
+          .btn-group-vertical{role: 'group'}
+            %a.btn.btn-success{href: '/game'} Yes
+            %a.btn.btn-danger{href: '/game_over'} No
+  %br
 
-  -if @no_bet
-    .col-xs-12.col-md-2
-      .well.text-center
-        %h4 Place a bet
-        %h5 (min $1)
-        %h3= "Current balance: #{session[:bank]}"
-        %form.form-actions{action: "/bet", method: 'post'}
-          %input.form-control{type: 'number', min: '1', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
-            %button.btn.btn-dark{type: 'submit'}
-              %i.fa.fa-money
-              Place bet
+  .container
+    .col-xs-12.col-md-10.well
+      .row.text-center
+        %h4.text-center= "#{session[:username]}'s cards"
+        -session[:player_cards].each do |card|
+          .col-xs-4.card_image
+            -if @no_bet
+              %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
+            -else
+              = card_image(card)
+
+    -if @no_bet
+      .col-xs-12.col-md-2
+        .well.text-center
+          %h4 Place a bet
+          %h5 (min $1)
+          %h3= "Current balance: #{session[:bank]}"
+          %form.form-actions{action: "/bet", method: 'post'}
+            %input.form-control{type: 'number', min: '1', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
+              %button.btn.btn-dark#bet{type: 'submit'}
+                %i.fa.fa-money
+                Place bet
