@@ -1,9 +1,9 @@
 #game
   -if !@no_bet && !(@winner || @loser)
     .alert.alert-info.text-center
-      %img.spin.pos{src: '/images/coin.png'}
-      ="| #{session[:username]} placed a bet for #{session[:bet]} |"
-      %img.spin_r.pos{src: '/images/coin.png'}
+      %img.spin.pos{src: 'images/face.png'}
+      %span.bet="| #{session[:username]} placed a bet for #{session[:bet]} |"
+      %img.spin_r.pos{src: 'images/face.png'}
   -elsif @loser
     .alert.alert-danger.text-center.blink
       =@loser
@@ -12,9 +12,23 @@
       =@winner
 
   .container.text-center
-    .col-md-8.col-md-offset-2
-      %h1 Blackjack!
-      %hr
+    .col-xs-12.col-md-10.col-md-offset-1
+      .row.heading
+        .col-xs-1.col-md-2.col-md-offset-3#coin
+          .coin.rotate
+            .side
+              %img{src: 'images/face.png'}
+            .side.back
+              %img{src: 'images/back.png'}
+        .col-xs-8.col-md-4
+          %h1 Blackjack
+        .col-xs-1.col-md-2#coin
+          .coin.rotate
+            .side
+              %img{src: 'images/face.png'}
+            .side.back
+              %img{src: 'images/back.png'}
+      %hr.ruler
       %h3.welcome= "Welcome #{session[:username]}"
 
   .container
@@ -59,7 +73,7 @@
         .well.text-center
           %b Play again?
           .btn-group-vertical{role: 'group'}
-            %a.btn.btn-success{href: '/game'} Yes
+            %a.btn.btn-success.again{href: '/game'} Yes
             %a.btn.btn-danger{href: '/game_over'} No
   %br
 
@@ -72,16 +86,17 @@
             -if @no_bet
               %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
             -else
-              = card_image(card)
+              =card_image(card)
 
+                  
     -if @no_bet
       .col-xs-12.col-md-2
         .well.text-center
           %h4 Place a bet
           %h5 (min $1)
           %h3= "Current balance: #{session[:bank]}"
-          %form.form-actions{action: "/bet", method: 'post'}
-            %input.form-control{type: 'number', min: '1', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
+          %form.form-actions#formoid{action: "/bet", method: 'post'}
+            %input.form-control.bet{type: 'number', min: '1', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
               %button.btn.btn-dark#bet{type: 'submit'}
                 %i.fa.fa-money
                 Place bet

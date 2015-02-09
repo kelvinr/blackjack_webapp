@@ -2,6 +2,9 @@ $(document).ready(function(){
   player_hits();
   player_stays();
   dealer_hit();
+  if($(window).width() <= 640) {
+      $(".pos").removeClass("spin spin_r");
+    }
 });
 
 function player_hits() {

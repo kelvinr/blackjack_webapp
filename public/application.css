@@ -10,14 +10,42 @@ body {
 
 h1{
   color: #401A1A;
+  text-shadow: 2px 2px 3px #9F730E;
+  margin-left: .16em;
 }
 
-hr {
-  border-color: #640303;
+h4 {
+  text-shadow: 1px 1px 1px;
+}
+
+.bet {
+  font-size: 1.1em;
+  text-shadow: 2px 1px 2px #DC9797;
+}
+
+.alert-info {
+  background: #5F1C1C;
+  color: #F1D19D;
+  border: #9D8383;
+  font-style: italic;
+  position: relative;
+  border: 1px solid #D49F10;
+  box-shadow: 2px 2px 6px 3px inset;
+}
+
+.ruler {
+  border: 0;
+  height: 1px;
+  background: #640303;
+  box-shadow: 2px 2px 6px 3px #531313;
 }
 
 .btn-sm {
   margin-left: -4%;
+}
+
+.heading {
+  margin-left: 5em;
 }
 
 .form-actions {
@@ -32,19 +60,17 @@ hr {
 
 .card_image {
   margin: 0 -2em .3em .6em;
+  display: inline
 }
 
 .total {
   padding: 4.6% 0;
 }
 
-.img-responsive {
-  display: inline;
-}
-
 .welcome {
   margin-top: -8px;
   color: #401A1A;
+  text-shadow: 2px 2px 3px #9F730E;
 }
 
 .well {
@@ -59,25 +85,22 @@ hr {
   margin-top: 1.5%;
 }
 
-/* Decrease navbar height for bs 3 */
-.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
-.navbar {min-height:40px !important}
 
 /* Custom buttons */
 .btn-xlarge {
     padding: 2% 40%;
     font-size: 22px;
     line-height: .5;
-    -webkit-border-radius: 8px;
-       -moz-border-radius: 8px;
-            border-radius: 8px;
+    border-radius: 8px;
 }
+
 .btn-dark {
   color: #ffffff;
   background-color: #000000;
   border-color: #777777;
   margin-top: 3px;
 }
+
 .btn-dark:hover,
 .btn-dark:focus,
 .btn-dark:active,
@@ -87,28 +110,48 @@ hr {
   background-color: #353535;
   border-color: #585858;
 }
+
 .btn-dark:active,
 .btn-dark.active,
 .open .dropdown-toggle.btn-dark {
   background-image: none;
 }
 
+.pos {
+  position: absolute;
+}
+
+/* coin container */
+#coin {
+  width: 32px;
+  height: 32px;
+  padding-top: 1.4em;
+  perspective: 80;
+  -webkit-perspective: 80;
+  position: relative;
+}
+
+.coin {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.coin .side {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.coin .back {
+  transform: rotateY(180deg);
+}
+
 /* Animation for alerts */
 .blink {
-    -webkit-animation-name: blinker;
-    -webkit-animation-duration: 1.6s;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: 3;
-
-    -moz-animation-name: blinker;
-    -moz-animation-duration: 1.6s;
-    -moz-animation-timing-function: ease-in-out;
-    -moz-animation-iteration-count: 3;
-
-    animation-name: blinker;
-    animation-duration: 1.6s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 3;
+  -webkit-animation: blinker 1.6s ease-in-out 3;
+  -moz-animation: blinker 1.6s ease-in-out 3;
+  animation: blinker 1.6s ease-in-out 3;
 }
 
 @-moz-keyframes blinker {  
@@ -131,20 +174,9 @@ hr {
 
 /* Point animation for dealer button */
 .dealer_button {
-    -webkit-animation-name: point;
-    -webkit-animation-duration: 1.4s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-
-    -moz-animation-name: point;
-    -moz-animation-duration: 1.4s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: linear;
-
-    animation-name: point;
-    animation-duration: 1.4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  -webkit-animation: point 1.4s infinite linear;
+  -moz-animation: point 1.4s infinite linear;
+  animation: point 1.4s infinite linear;
 }
 
 @-moz-keyframes point {  
@@ -166,30 +198,10 @@ hr {
 }
 
 /* Spin Animation for bet alert */
-.alert-info {
-  background: #99BAFF;
-  color: #203C23;
-}
-
-.pos {
-  position: absolute;
-}
-
 .spin {
-    -webkit-animation-name: spin;
-    -webkit-animation-duration: 4s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-
-    -moz-animation-name: spin;
-    -moz-animation-duration: 4s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: linear;
-
-    animation-name: spin;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  -webkit-animation: spin 4s infinite linear;
+  -moz-animation: spin 4s infinite linear;
+  animation: spin 4s infinite linear;
 }
 
 @-moz-keyframes spin {
@@ -218,44 +230,136 @@ hr {
 }
 
 .spin_r {
-    -webkit-animation-name: spin_r;
-    -webkit-animation-duration: 4s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-
-    -moz-animation-name: spin_r;
-    -moz-animation-duration: 4s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: linear;
-
-    animation-name: spin_r;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  -webkit-animation: spin_r 4s infinite linear;
+  -moz-animation: spin_r 4s infinite linear;
+  animation: spin_r 4s infinite linear;
 }
 
 @-moz-keyframes spin_r {
-    0% { -webkit-transform: rotate(500deg);
+    0% { -webkit-transform: rotate(510deg);
             margin-left: 30%;}
     50% { -webkit-transform: rotate(0deg);
             margin-left: 0%;}
-    100% { -webkit-transform: rotate(500deg); 
+    100% { -webkit-transform: rotate(510deg); 
             margin-left: 30%;}
 }
 @-webkit-keyframes spin_r {
-    0% { -webkit-transform: rotate(500deg);
+    0% { -webkit-transform: rotate(510deg);
             margin-left: 30%;}
     50% { -webkit-transform: rotate(0deg);
             margin-left: 0%;}
-    100% { -webkit-transform: rotate(500deg); 
+    100% { -webkit-transform: rotate(510deg); 
             margin-left: 30%;}
 }
 @keyframes spin_r {
-    0% { transform: rotate(500deg);
+    0% { transform: rotate(510deg);
             margin-left: 30%;}
     50% { transform: rotate(0deg);
             margin-left: 0%;}
-    100% { transform: rotate(500deg); 
+    100% { transform: rotate(510deg); 
             margin-left: 30%;}
 }
 
+/* Rotate animation for header */
+.rotate {
+  -webkit-animation: rotate 1.5s linear infinite;
+  -moz-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+}
+
+@-moz-keyframes rotate {
+  from { -moz-transform: rotateY( 0deg );}
+  to { -moz-transform: rotateY( 360deg );}
+}
+@-webkit-keyframes rotate {
+  from { -webkit-transform: rotateY( 0deg );}
+  to { -webkit-transform: rotateY( 360deg );}
+}
+@keyframes rotate {
+  from { transform: rotateY( 0deg );}
+  to { transform: rotateY( 360deg );}
+}
+
+/* Return button animation */
+.return {
+  -webkit-animation: return 2.5s infinite ease-out;
+  -moz-animation: return 2.5s infinite ease-out;
+  animation: return 2.5s infinite ease-out;
+}
+
+@-moz-keyframes return {
+  from { -moz-transform: rotate( 50deg );}
+  to { -moz-transform: rotate( -35deg );}
+}
+@-webkit-keyframes return {
+  from { -webkit-transform: rotate( 50deg );}
+  to { -webkit-transform: rotate( -35deg );}
+}
+@keyframes return {
+  from { transform: rotate( 50deg );}
+  to { transform: rotate( -35deg );}
+}
+
+/* Custom navbar */
+.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar {min-height:40px !important}
+
+.navbar-default {
+  background-color: #691827;
+  border-color: #c2754c;
+}
+.navbar-default .navbar-brand {
+  color: #88893b;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #B8A411;
+}
+.navbar-default .navbar-text {
+  color: #FF4200; /*#88893b;*/
+}
+.navbar-default .navbar-nav > li > a {
+  color: #C3776B;
+  text-shadow: 2px 2px 3px #88893b;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #B8A411;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #B8A411;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #B8A411;
+  background-color: #c2754c;
+}
+.navbar-default .navbar-toggle {
+  border-color: #c2754c;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #c2754c;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #88893b;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #88893b;
+}
+.navbar-default .navbar-link {
+  color: #88893b;
+}
+.navbar-default .navbar-link:hover {
+  color: #5f2460;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #88893b;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #5f2460;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #5f2460;
+    background-color: #c2754c;
+  }
+}
