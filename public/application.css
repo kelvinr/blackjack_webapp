@@ -14,9 +14,6 @@ h1{
   margin-left: .16em;
 }
 
-h4 {
-  text-shadow: 1px 1px 1px;
-}
 
 .bet {
   font-size: 1.1em;
@@ -30,14 +27,14 @@ h4 {
   font-style: italic;
   position: relative;
   border: 1px solid #D49F10;
-  box-shadow: 2px 2px 6px 3px inset;
+  box-shadow: .1em .1em .6em .4em inset;
 }
 
 .ruler {
   border: 0;
   height: 1px;
   background: #640303;
-  box-shadow: 2px 2px 6px 3px #531313;
+  box-shadow: .1em .1em .8em .4em #531313;
 }
 
 .btn-sm {
@@ -126,8 +123,8 @@ h4 {
   width: 32px;
   height: 32px;
   padding-top: 1.4em;
-  perspective: 80;
-  -webkit-perspective: 80;
+  perspective: 70;
+  -webkit-perspective: 70;
   position: relative;
 }
 
@@ -155,109 +152,94 @@ h4 {
 }
 
 @-moz-keyframes blinker {  
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
 }
 
 @-webkit-keyframes blinker {  
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
 }
 
 @keyframes blinker { 
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
 }
 
 /* Point animation for dealer button */
 .dealer_button {
-  -webkit-animation: point 1.4s infinite linear;
-  -moz-animation: point 1.4s infinite linear;
-  animation: point 1.4s infinite linear;
+  -webkit-animation: point 1.4s infinite linear alternate;
+  -moz-animation: point 1.4s infinite linear alternate;
+  animation: point 1.4s infinite linear alternate;
 }
 
 @-moz-keyframes point {  
-    0% {margin-left:-200%;}
-    50% {margin-left: 55%;}
-    100% {margin-left: 80%;}
+  from {margin-left:-200%;}
+    to {margin-left: 80%;}
 }
 
 @-webkit-keyframes point {  
-    0% {margin-left:-200%;}
-    50% {margin-left: 55%;}
-    100% {margin-left: 80%;}
+  from {margin-left:-200%;}
+    to {margin-left: 80%;}
 }
 
 @keyframes point {  
-    0% {margin-left:-200%;}
-    50% {margin-left: 55%;}
-    100% {margin-left: 80%;}
+  from {margin-left:-200%;}
+    to {margin-left: 80%;}
 }
 
 /* Spin Animation for bet alert */
 .spin {
-  -webkit-animation: spin 4s infinite linear;
-  -moz-animation: spin 4s infinite linear;
-  animation: spin 4s infinite linear;
+  -webkit-animation: spin 2.2s infinite linear alternate;
+  -moz-animation: spin 2.2s infinite linear alternate;
+  animation: spin 2.2s infinite linear alternate;
 }
 
 @-moz-keyframes spin {
-    0% { -webkit-transform: rotate(0deg);
-            margin-left: -35%;}
-    50% { -webkit-transform: rotate(520deg);
-            margin-left: -4%;}
-   100% { -webkit-transform: rotate(0deg); 
-            margin-left: -35%;}
+  from {-webkit-transform: rotate(0deg);
+          margin-left: -35%;}
+    to {-webkit-transform: rotate(520deg);
+          margin-left: -4%;}
 }
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg);
-            margin-left: -35%;}
-    50% { -webkit-transform: rotate(520deg);
-            margin-left: -4%;}
-   100% { -webkit-transform: rotate(0deg); 
-            margin-left: -35%;}
+  from {-webkit-transform: rotate(0deg);
+          margin-left: -35%;}
+    to {-webkit-transform: rotate(520deg);
+          margin-left: -4%;}
 }
 @keyframes spin {
-    0% { transform: rotate(0deg);
-            margin-left: -35%;}
-    50% { transform: rotate(520deg);
-            margin-left: -4%;}
-    100% { transform: rotate(0deg); 
-            margin-left: -35%;}
+  from {transform: rotate(0deg);
+          margin-left: -35%;}
+    to% {transform: rotate(520deg);
+          margin-left: -4%;}
 }
 
 .spin_r {
-  -webkit-animation: spin_r 4s infinite linear;
-  -moz-animation: spin_r 4s infinite linear;
-  animation: spin_r 4s infinite linear;
+  -webkit-animation: spin_r 2.2s infinite linear alternate;
+  -moz-animation: spin_r 2.2s infinite linear alternate;
+  animation: spin_r 2.2s infinite linear alternate;
 }
 
 @-moz-keyframes spin_r {
-    0% { -webkit-transform: rotate(510deg);
-            margin-left: 30%;}
-    50% { -webkit-transform: rotate(0deg);
-            margin-left: 0%;}
-    100% { -webkit-transform: rotate(510deg); 
-            margin-left: 30%;}
+  from {-webkit-transform: rotate(510deg);
+          margin-left: 30%;}
+    to {-webkit-transform: rotate(0deg);
+          margin-left: 0%;}
 }
 @-webkit-keyframes spin_r {
-    0% { -webkit-transform: rotate(510deg);
-            margin-left: 30%;}
-    50% { -webkit-transform: rotate(0deg);
-            margin-left: 0%;}
-    100% { -webkit-transform: rotate(510deg); 
-            margin-left: 30%;}
+  from {-webkit-transform: rotate(510deg);
+          margin-left: 30%;}
+    to {-webkit-transform: rotate(0deg);
+          margin-left: 0%;}
 }
 @keyframes spin_r {
-    0% { transform: rotate(510deg);
-            margin-left: 30%;}
-    50% { transform: rotate(0deg);
-            margin-left: 0%;}
-    100% { transform: rotate(510deg); 
-            margin-left: 30%;}
+  from {transform: rotate(510deg);
+          margin-left: 30%;}
+    to {transform: rotate(0deg);
+          margin-left: 0%;}
 }
 
 /* Rotate animation for header */
@@ -269,35 +251,35 @@ h4 {
 
 @-moz-keyframes rotate {
   from { -moz-transform: rotateY( 0deg );}
-  to { -moz-transform: rotateY( 360deg );}
+    to { -moz-transform: rotateY( 360deg );}
 }
 @-webkit-keyframes rotate {
   from { -webkit-transform: rotateY( 0deg );}
-  to { -webkit-transform: rotateY( 360deg );}
+    to { -webkit-transform: rotateY( 360deg );}
 }
 @keyframes rotate {
   from { transform: rotateY( 0deg );}
-  to { transform: rotateY( 360deg );}
+    to { transform: rotateY( 360deg );}
 }
 
 /* Return button animation */
 .return {
-  -webkit-animation: return 2.5s infinite ease-out;
-  -moz-animation: return 2.5s infinite ease-out;
-  animation: return 2.5s infinite ease-out;
+  -webkit-animation: return 2s infinite ease-out alternate;
+  -moz-animation: return 2s infinite ease-out alternate;
+  animation: return 2s infinite ease-out alternate;
 }
 
 @-moz-keyframes return {
-  from { -moz-transform: rotate( 50deg );}
-  to { -moz-transform: rotate( -35deg );}
+  from { -moz-transform: rotate( 55deg );}
+    to { -moz-transform: rotate( -30deg );}
 }
 @-webkit-keyframes return {
-  from { -webkit-transform: rotate( 50deg );}
-  to { -webkit-transform: rotate( -35deg );}
+  from { -webkit-transform: rotate( 55deg );}
+    to { -webkit-transform: rotate( -30deg );}
 }
 @keyframes return {
-  from { transform: rotate( 50deg );}
-  to { transform: rotate( -35deg );}
+  from { transform: rotate( 55deg );}
+    to { transform: rotate( -30deg );}
 }
 
 /* Custom navbar */

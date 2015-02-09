@@ -10,15 +10,13 @@
     %link(rel="stylesheet" media="(max-width: 640px)" href="/max-640px.css")
     %title Blackjack | Casino
   %body
-    .navbar-wrapper
-      .container
-        .navbar.navbar-default.navbar-fixed-top
-          .container
-            %ul.nav.navbar-nav
-              %li
-                %a{href: "/new_player"}
-                  %i.fa.fa-refresh.fa-spin
-                  New Game
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        %ul.nav.navbar-nav
+          %li
+            %a{href: "/new_player"}
+              %i.fa.fa-refresh.fa-spin
+              New Game
     .container-fluid
       -if @error
         .alert.alert-danger.text-center.blink
@@ -27,7 +25,7 @@
         .alert.alert-success.text-center.blink
           =@success
       =yield
-
+        
   %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}
   %script{src: "/vendor/bootstrap/js/bootstrap.min.js"}
   %script{src: "/application.js"}
