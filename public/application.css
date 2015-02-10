@@ -363,4 +363,15 @@ h1{
     -moz-animation: spin paused;
     animation: spin paused;
   }
+  .heading {
+  margin-left: -3.5%;
+  }
+
+  .col-xs-1 {
+    margin-right: 2.3%;
+  }
+
+  .pos {
+      position: relative;
+  }
 }
