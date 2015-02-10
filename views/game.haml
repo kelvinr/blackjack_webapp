@@ -43,8 +43,8 @@
               =card_image(card)
 
     -if !@no_bet
-      .col-xs-6.col-md-2
-        .well.text-center
+      .col-xs-6.col-md-2.text-center
+        .well
           %h4.total
             =precede "#{session[:username]}'s total is: " do
               =total(session[:player_cards])

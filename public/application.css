@@ -17,7 +17,7 @@ h1{
 
 .bet {
   font-size: 1.1em;
-  text-shadow: 2px 1px 2px #DC9797;
+  letter-spacing: -1px;
 }
 
 .alert-info {
@@ -28,6 +28,7 @@ h1{
   position: relative;
   border: 1px solid #D49F10;
   box-shadow: .1em .1em .6em .4em inset;
+  padding: 1.2em 0;
 }
 
 .ruler {
@@ -81,7 +82,6 @@ h1{
 #vertical_center {
   margin-top: 1.5%;
 }
-
 
 /* Custom buttons */
 .btn-xlarge {
@@ -283,16 +283,20 @@ h1{
 }
 
 /* Custom navbar */
-.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar-nav > li > a {padding-top:8px !important; padding-bottom:10px !important;}
 .navbar {min-height:40px !important}
-
+.navbar-fixed-top {
+    height: 40px; 
+  }
 .navbar-default {
   background-color: #691827;
   border-color: #c2754c;
 }
 .navbar-default .navbar-brand {
   color: #88893b;
+  font-size: 1.2em;
 }
+
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: #B8A411;
 }
@@ -343,5 +347,20 @@ h1{
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #5f2460;
     background-color: #c2754c;
+  }
+  .navbar-nav > li > a {padding-top: 0 !important; padding-bottom: 5px !important;}
+  .navbar {min-height:20px !important}
+  .navbar-fixed-top {
+    height: 35px; 
+  }
+  .spin_r {
+  -webkit-animation: spin_r paused;
+  -moz-animation: spin_r paused;
+  animation: spin_r paused;
+  }
+  .spin {
+    -webkit-animation: spin paused;
+    -moz-animation: spin paused;
+    animation: spin paused;
   }
 }
