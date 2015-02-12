@@ -1,14 +1,15 @@
 #game
+  .alert.alert-danger.blink.error
   -if !@no_bet && !(@winner || @loser)
-    .alert.alert-info.text-center
+    .alert.alert-info
       %img.spin.pos{src: 'images/face.png'}
-      %span.bet="| #{session[:username]} placed a bet for #{session[:bet]} |"
+      %span.info="| #{session[:username]} placed a bet for #{session[:bet]} |"
       %img.spin_r.pos{src: 'images/face.png'}
   -elsif @loser
-    .alert.alert-danger.text-center.blink
+    .alert.alert-danger.blink
       =@loser
   -elsif @winner
-    .alert.alert-success.text-center.blink
+    .alert.alert-success.blink
       =@winner
 
   .container.text-center
@@ -30,7 +31,6 @@
               %img{src: 'images/back.png'}
       %hr.ruler
       %h3.welcome= "Welcome #{session[:username]}"
-
   .container
     .col-xs-12.col-md-10.well
       .row.text-center
@@ -49,17 +49,17 @@
             =precede "#{session[:username]}'s total is: " do
               =total(session[:player_cards])
 
-    -if @show_dealer_hit_button
+    -if @show_dealer_button
       .col-xs-6.col-md-2
         .well.text-center
           %h4
             =precede "Dealer total:" do
               =total(session[:dealer_cards])
-          %form#dealer_hit{action: '/game/dealer/hit', method: 'post'}
-            %button.btn.btn-xlarge.btn-primary{type: 'submit'}
+          %form{action: '/game/dealer/hit', method: 'post'}
+            %button.btn.btn-primary#dealer_hit{type: 'submit'}
               %i.fa.fa-hand-o-right.dealer_button
 
-    -if @show_hit_or_stay_buttons && !@no_bet
+    -if @show_player_buttons && !@no_bet
       .col-xs-6.col-md-2
         .well
           .form-actions
@@ -68,7 +68,7 @@
             %form{action: "/stay", method: "post"}
               %input.btn.btn-warning#stay{type: 'submit', value: 'Stay'}
 
-    -if @play_again
+    -if (@winner || @loser)
       .col-xs-6.col-md-2
         .well.text-center
           %b Play again?
@@ -76,7 +76,6 @@
             %a.btn.btn-success.again{href: '/game'} Yes
             %a.btn.btn-danger{href: '/game_over'} No
   %br
-
   .container
     .col-xs-12.col-md-10.well
       .row.text-center
@@ -88,15 +87,14 @@
             -else
               =card_image(card)
 
-                  
     -if @no_bet
       .col-xs-12.col-md-2
         .well.text-center
           %h4 Place a bet
           %h5 (min $1)
           %h3= "Current balance: #{session[:bank]}"
-          %form.form-actions#formoid{action: "/bet", method: 'post'}
+          %form.form-actions#bet{action: "/bet", method: 'post'}
             %input.form-control.bet{type: 'number', min: '1', max: "#{session[:bank]}", name: 'bet', placeholder: 'Amount'}
-              %button.btn.btn-dark#bet{type: 'submit'}
+              %button.btn.btn-dark{type: 'submit'}
                 %i.fa.fa-money
-                Place bet
+                Bet

@@ -17,12 +17,6 @@
               %i.fa.fa-refresh.fa-spin
               New Game
     .container-fluid
-      -if @error
-        .alert.alert-danger.text-center.blink
-          =@error
-      -if @success
-        .alert.alert-success.text-center.blink
-          =@success
       =yield
         
   %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}

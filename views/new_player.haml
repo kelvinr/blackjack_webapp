@@ -1,3 +1,4 @@
+.alert.alert-danger.blink.error
 .container
   .col-sm-6.col-sm-offset-3
     %img.img-responsive{src: 'images/BlackJack.jpg'}
@@ -9,7 +10,7 @@
       %br
       what's your name?
 
-    %form{action: "/new_player", method: "post"}
+    %form#name{action: "/new_player", method: "post"}
       %input.name{type: 'text', name: 'username', placeholder: "Name"}
       %br
       %br

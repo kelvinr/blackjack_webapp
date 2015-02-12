@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  get_name();
+  place_bet();
   player_hits();
   player_stays();
   dealer_hit();
@@ -39,5 +41,25 @@ function dealer_hit() {
     });
 
     return false;
+  });
+}
+
+function get_name() {
+  $("#name").submit(function() {
+    var name = $.trim($(".name").val());
+    if (name === '') {
+      $(".error").text("Name is required.").show();
+      return false;
+    }
+  });
+}
+
+function place_bet() {
+  $("#bet").submit(function() {
+    var bet = $.trim($(".bet").val());
+    if (bet === '') {
+      $(".error").text("Must place a bet.").show();
+      return false;
+    }
   });
 }

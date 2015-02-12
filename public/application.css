@@ -14,21 +14,24 @@ h1{
   margin-left: .16em;
 }
 
+.error {
+  display: none;
+}
 
-.bet {
-  font-size: 1.1em;
-  letter-spacing: -1px;
+.alert {
+  text-align: center;
 }
 
 .alert-info {
   background: #5F1C1C;
   color: #F1D19D;
-  border: #9D8383;
-  font-style: italic;
   position: relative;
   border: 1px solid #D49F10;
   box-shadow: .1em .1em .6em .4em inset;
   padding: 1.2em 0;
+  font-size: 1.1em;
+  letter-spacing: -1px;
+  font-style: italic;
 }
 
 .ruler {
@@ -84,7 +87,7 @@ h1{
 }
 
 /* Custom buttons */
-.btn-xlarge {
+#dealer_hit {
     padding: 2% 40%;
     font-size: 22px;
     line-height: .5;
@@ -283,11 +286,13 @@ h1{
 }
 
 /* Custom navbar */
-.navbar-nav > li > a {padding-top:8px !important; padding-bottom:10px !important;}
-.navbar {min-height:40px !important}
+.navbar-nav > li > a {padding-top:8px !important; padding-bottom:10px !important;
+}
+.navbar {min-height:40px !important
+}
 .navbar-fixed-top {
     height: 40px; 
-  }
+}
 .navbar-default {
   background-color: #691827;
   border-color: #c2754c;
@@ -296,7 +301,6 @@ h1{
   color: #88893b;
   font-size: 1.2em;
 }
-
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: #B8A411;
 }
@@ -348,21 +352,26 @@ h1{
     color: #5f2460;
     background-color: #c2754c;
   }
-  .navbar-nav > li > a {padding-top: 0 !important; padding-bottom: 5px !important;}
-  .navbar {min-height:20px !important}
-  .navbar-fixed-top {
-    height: 35px; 
+  .navbar-nav > li > a {padding-top: 0 !important; padding-bottom: 5px !important;
   }
+  .navbar {min-height:20px !important
+  }
+  .navbar-fixed-top {
+    height: 35px;
+  }
+
   .spin_r {
   -webkit-animation: spin_r paused;
   -moz-animation: spin_r paused;
   animation: spin_r paused;
   }
+
   .spin {
     -webkit-animation: spin paused;
     -moz-animation: spin paused;
     animation: spin paused;
   }
+
   .heading {
   margin-left: -3.5%;
   }

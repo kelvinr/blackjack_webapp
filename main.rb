@@ -39,23 +39,20 @@ helpers do
   end
 
   def winner!(msg)
-    @play_again = true
-    @show_hit_or_stay_buttons = false
     session[:bank] += session[:bet] * 1.5 if total(session[:player_cards]) == BLACKJACK_AMOUNT
     session[:bank] += session[:bet]
+    @show_player_buttons = false
     @winner = "#{session[:username]} wins, #{msg}."
   end
 
   def loser!(msg)
-    @play_again = true
-    @show_hit_or_stay_buttons = false
     session[:bank] -= session[:bet]
+    @show_player_buttons = false
     @loser = "#{session[:username]} loses #{msg}."
   end
 
   def tie!(msg)
-    @play_again = true
-    @show_hit_or_stay_buttons = false
+    @show_player_buttons = false
     @winner = "It's a tie! #{msg}."
   end
 
@@ -65,7 +62,7 @@ helpers do
 end
 
 before do
-  @show_hit_or_stay_buttons = true
+  @show_player_buttons = true
 end
 
 get '/' do
@@ -78,18 +75,14 @@ get '/new_player' do
 end
 
 post '/new_player' do
-  if params[:username].empty?
-    @error = "Name is required."
-    halt haml(:new_player)
-  end
   session[:username] = params[:username]
   session[:bank] = INITIAL_BALANCE
+  redirect '/new_player' if session[:username].empty?
   redirect '/game'
 end
 
 post '/bet' do
   if params[:bet].empty?
-    @error = "Must place a bet."
     @no_bet = true
     halt haml(:game)
   end
@@ -99,7 +92,6 @@ end
 
 get '/game' do
   session[:turn] = session[:username]
-  redirect '/game_over' if broke?(session[:bank])
 
   SUITS = ["hearts", "diamonds", "clubs", "spades"]
   VALUES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -111,6 +103,7 @@ get '/game' do
     session[:dealer_cards] << session[:deck].pop
     session[:player_cards] << session[:deck].pop
   end
+  redirect '/game_over' if broke?(session[:bank])
   @no_bet = true
   haml :game
 end
@@ -136,7 +129,7 @@ end
 get '/game/dealer' do
   session[:turn] = "dealer"
 
-  @show_hit_or_stay_buttons = false
+  @show_player_buttons = false
   dealer_total = total(session[:dealer_cards])
 
   if dealer_total == BLACKJACK_AMOUNT
@@ -146,7 +139,7 @@ get '/game/dealer' do
   elsif dealer_total >= DEALER_HIT_MIN
     redirect '/game/compare'
   else
-    @show_dealer_hit_button = true
+    @show_dealer_button = true
   end
   haml :game, layout: false
 end
@@ -157,7 +150,7 @@ post '/game/dealer/hit' do
 end
 
 get '/game/compare' do
-  @show_hit_or_stay_buttons = false
+  @show_player_buttons = false
   player_total = total(session[:player_cards])
   dealer_total = total(session[:dealer_cards])
 
