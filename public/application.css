@@ -60,7 +60,7 @@ h1{
 }
 
 .card_image {
-  margin: 0 -2em .3em .6em;
+  margin: 0 -1.8em .25em 1em;
   display: inline
 }
 
@@ -382,5 +382,10 @@ h1{
 
   .pos {
       position: relative;
+  }
+
+  .card_image {
+  margin: 0 -2em .25em .6em;
+  display: inline
   }
 }

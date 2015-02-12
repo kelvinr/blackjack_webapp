@@ -35,7 +35,7 @@ helpers do
     value = card[1]
     value = face.fetch(value) if face.has_key?(value)
       
-    "<img src='/images/cards/#{suit}_#{value}.jpg' class='img-responsive card_image back'>"
+    "<img src='/images/cards/#{suit}_#{value}.jpg' class='img-responsive card_image'>"
   end
 
   def winner!(msg)
