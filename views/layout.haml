@@ -4,9 +4,12 @@
     %meta{charset: 'utf-8'}
     %meta{name: "viewport", content: 'width=device-width', 'initial-scale' => '1'}
     
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}
     %link(rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css")
-    %link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+    %script{src: "/vendor/bootstrap/js/bootstrap.min.js"}
     %link(rel="stylesheet" href="/application.css")
+    %link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+    %script{src: "/application.js"}
     %title Blackjack | Casino
   %body
     %nav.navbar.navbar-default.navbar-fixed-top
@@ -19,7 +22,4 @@
     .container-fluid
       =yield
         
-  %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}
-  %script{src: "/vendor/bootstrap/js/bootstrap.min.js"}
-  %script{src: "/application.js"}
 

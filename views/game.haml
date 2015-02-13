@@ -31,12 +31,13 @@
               %img{src: 'images/back.png'}
       %hr.ruler
       %h3.welcome= "Welcome #{session[:username]}"
+      
   .container
     .col-xs-12.col-md-10.well
-      %h4.text-center Dealer's cards
-      .row
+      %h4.hand Dealer's cards
+      .flex-container
         -session[:dealer_cards].each_with_index do |card, idx|
-          .col-xs-4.col-md-3.card_image
+          .col-xs-4.col-md-3
             -if session[:turn] != "dealer" && idx == 0
               %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
             -else
@@ -78,10 +79,10 @@
   %br
   .container
     .col-xs-12.col-md-10.well
-      %h4.text-center= "#{session[:username]}'s cards"
-      .row
+      %h4.hand= "#{session[:username]}'s cards"
+      .flex-container
         -session[:player_cards].each do |card|
-          .col-xs-4.col-md-3.card_image
+          .col-xs-4.col-md-3
             -if @no_bet
               %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
             -else

@@ -41,10 +41,6 @@ h1{
   box-shadow: .1em .1em .8em .4em #531313;
 }
 
-.btn-sm {
-  margin-left: -4%;
-}
-
 .heading {
   margin-left: 5em;
 }
@@ -60,8 +56,27 @@ h1{
 }
 
 .card_image {
-  display: inline;
-  margin-top: 0 -1.8em .25em 1em;
+  margin: 3% 0 2% 8%;
+}
+
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-flex-wrap: wrap;
+   flex-wrap: wrap;
+   -webkit-flex-flow: row wrap;
+   flex-flow: row wrap;
+}
+
+.hand {
+  text-align: center;
+  text-decoration: underline;
 }
 
 .total {
@@ -82,8 +97,9 @@ h1{
   font-size: 1.1em;
 }
 
-#vertical_center {
+#center {
   margin-top: 1.5%;
+  text-align: center;
 }
 
 /* Custom buttons */
@@ -378,14 +394,5 @@ h1{
 
   .col-xs-1 {
     margin-right: 2.3%;
-  }
-
-  .pos {
-      position: relative;
-  }
-
-  .card_image {
-  margin: 0 -2em .25em .6em;
-  display: inline;
   }
 }
