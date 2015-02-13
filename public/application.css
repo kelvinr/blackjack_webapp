@@ -60,8 +60,8 @@ h1{
 }
 
 .card_image {
-  margin: 0 -1.8em .25em 1em;
-  display: inline
+  display: inline;
+  margin-top: 0 -1.8em .25em 1em;
 }
 
 .total {
@@ -202,9 +202,9 @@ h1{
 }
 
 @-moz-keyframes spin {
-  from {-webkit-transform: rotate(0deg);
+  from {-moz-transform: rotate(0deg);
           margin-left: -35%;}
-    to {-webkit-transform: rotate(520deg);
+    to {-moz-transform: rotate(520deg);
           margin-left: -4%;}
 }
 @-webkit-keyframes spin {
@@ -227,9 +227,9 @@ h1{
 }
 
 @-moz-keyframes spin_r {
-  from {-webkit-transform: rotate(510deg);
+  from {-moz-transform: rotate(510deg);
           margin-left: 30%;}
-    to {-webkit-transform: rotate(0deg);
+    to {-moz-transform: rotate(0deg);
           margin-left: 0%;}
 }
 @-webkit-keyframes spin_r {
@@ -253,16 +253,16 @@ h1{
 }
 
 @-moz-keyframes rotate {
-  from { -moz-transform: rotateY( 0deg );}
-    to { -moz-transform: rotateY( 360deg );}
+  from {-moz-transform: rotateY( 0deg );}
+    to {-moz-transform: rotateY( 360deg );}
 }
 @-webkit-keyframes rotate {
-  from { -webkit-transform: rotateY( 0deg );}
-    to { -webkit-transform: rotateY( 360deg );}
+  from {-webkit-transform: rotateY( 0deg );}
+    to {-webkit-transform: rotateY( 360deg );}
 }
 @keyframes rotate {
-  from { transform: rotateY( 0deg );}
-    to { transform: rotateY( 360deg );}
+  from {transform: rotateY( 0deg );}
+    to {transform: rotateY( 360deg );}
 }
 
 /* Return button animation */
@@ -273,16 +273,16 @@ h1{
 }
 
 @-moz-keyframes return {
-  from { -moz-transform: rotate( 55deg );}
-    to { -moz-transform: rotate( -30deg );}
+  from {-moz-transform: rotate( 55deg );}
+    to {-moz-transform: rotate( -30deg );}
 }
 @-webkit-keyframes return {
-  from { -webkit-transform: rotate( 55deg );}
-    to { -webkit-transform: rotate( -30deg );}
+  from {-webkit-transform: rotate( 55deg );}
+    to {-webkit-transform: rotate( -30deg );}
 }
 @keyframes return {
-  from { transform: rotate( 55deg );}
-    to { transform: rotate( -30deg );}
+  from {transform: rotate( 55deg );}
+    to {transform: rotate( -30deg );}
 }
 
 /* Custom navbar */

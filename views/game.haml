@@ -32,11 +32,11 @@
       %hr.ruler
       %h3.welcome= "Welcome #{session[:username]}"
   .container
-    .col-xs-12.col-md-10.well
+    .col-xs-12.col-md-9.well
+      %h4.text-center Dealer's cards
       .row
-        %h4.text-center Dealer's cards
         -session[:dealer_cards].each_with_index do |card, idx|
-          .col-xs-4.col-md-3.card_image
+          .col-xs-4.col-md-4.card_image
             -if session[:turn] != "dealer" && idx == 0
               %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
             -else
@@ -77,11 +77,11 @@
             %a.btn.btn-danger{href: '/game_over'} No
   %br
   .container
-    .col-xs-12.col-md-10.well
+    .col-xs-12.col-md-9.well
+      %h4.text-center= "#{session[:username]}'s cards"
       .row
-        %h4.text-center= "#{session[:username]}'s cards"
         -session[:player_cards].each do |card|
-          .col-xs-4.col-md-3.card_image
+          .col-xs-4.col-md-4.card_image
             -if @no_bet
               %img.img-responsive.card_image{src: 'images/cards/cover.jpg'}
             -else
