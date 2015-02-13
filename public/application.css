@@ -383,9 +383,9 @@ h1{
   }
 
   .spin {
-    -webkit-animation: spin paused;
-    -moz-animation: spin paused;
-    animation: spin paused;
+  -webkit-animation: spin paused;
+  -moz-animation: spin paused;
+  animation: spin paused;
   }
 
   .heading {
@@ -394,5 +394,9 @@ h1{
 
   .col-xs-1 {
     margin-right: 2.3%;
+  }
+
+  .pos {
+    position: relative;
   }
 }
