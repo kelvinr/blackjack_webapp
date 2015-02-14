@@ -66,7 +66,7 @@ function place_bet() {
 }
 
 function info() {
-  $('.glyphicon-info-sign').on('mouseenter', function(){
+  $('.glyphicon-info-sign').click(function(){
     $('.directions').slideToggle();
   });
 }
