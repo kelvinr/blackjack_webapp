@@ -14,6 +14,21 @@ h1{
   margin-left: .16em;
 }
 
+.shadow {
+  color: #401A1A;
+  text-shadow: 2px 2px 3px #9F730E;
+}
+
+.directions {
+  display: none;
+  width: 12em;
+  position: absolute;
+}
+
+.glyphicon-info-sign {
+  padding-left: 5%;
+}
+
 .error {
   display: none;
 }
@@ -39,10 +54,6 @@ h1{
   height: 1px;
   background: #640303;
   box-shadow: .1em .1em .8em .4em #531313;
-}
-
-.heading {
-  margin-left: 5em;
 }
 
 .form-actions {
@@ -83,14 +94,16 @@ h1{
   padding: 4.6% 0;
 }
 
-.welcome {
-  margin-top: -8px;
-  color: #401A1A;
-  text-shadow: 2px 2px 3px #9F730E;
-}
-
 .well {
    background-color: rgba(245, 245, 245, 0.3);
+}
+
+.dark_well {
+   background-color: rgba(245, 245, 245, 0.7);
+   border-radius: 3em;
+   border: solid 1px #BCDBDB;
+   box-shadow: 0 0 .5em .5em #FFFFFF inset;
+   padding-right: 2em;
 }
 
 .restart {
@@ -386,14 +399,6 @@ h1{
   -webkit-animation: spin paused;
   -moz-animation: spin paused;
   animation: spin paused;
-  }
-
-  .heading {
-  margin-left: -3.5%;
-  }
-
-  .col-xs-1 {
-    margin-right: 2.3%;
   }
 
   .pos {

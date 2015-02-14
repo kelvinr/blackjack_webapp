@@ -13,15 +13,15 @@
       =@winner
 
   .container.text-center
-    .col-xs-12.col-md-10.col-md-offset-1
-      .row.heading
-        .col-xs-1.col-md-2.col-md-offset-3#coin
+    .col-xs-12.col-md-12
+      .row
+        .col-xs-2.col-md-2.col-md-offset-3#coin
           .coin.rotate
             .side
               %img{src: 'images/face.png'}
             .side.back
               %img{src: 'images/back.png'}
-        .col-xs-8.col-md-4
+        .col-xs-9.col-md-4
           %h1 Blackjack
         .col-xs-1.col-md-2#coin
           .coin.rotate
@@ -30,8 +30,9 @@
             .side.back
               %img{src: 'images/back.png'}
       %hr.ruler
-      %h3.welcome= "Welcome #{session[:username]}"
-      
+      %h3.shadow= "Welcome #{session[:username]}"
+        
+
   .container
     .col-xs-12.col-md-10.well
       %h4.hand Dealer's cards

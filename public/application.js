@@ -1,5 +1,6 @@
 $(document).ready(function(){
   get_name();
+  info();
   place_bet();
   player_hits();
   player_stays();
@@ -61,5 +62,11 @@ function place_bet() {
       $(".error").text("Must place a bet.").show();
       return false;
     }
+  });
+}
+
+function info() {
+  $('.glyphicon-info-sign').on('mouseenter', function(){
+    $('.directions').slideToggle();
   });
 }
