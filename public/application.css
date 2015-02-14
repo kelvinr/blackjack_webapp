@@ -14,6 +14,12 @@ h1{
   margin-left: .16em;
 }
 
+p{
+  font-size: .7em;
+  letter-spacing: -.7;
+  word-spacing: -.77em;
+}
+
 .shadow {
   color: #401A1A;
   text-shadow: 2px 2px 3px #9F730E;
@@ -21,12 +27,13 @@ h1{
 
 .directions {
   display: none;
-  width: 12em;
+  width: 20rem;
   position: absolute;
 }
 
 .glyphicon-info-sign {
-  padding-left: 5%;
+  margin-left: .2rem;
+  font-size: 1.5em;
 }
 
 .error {
